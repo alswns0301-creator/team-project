@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "text": "사고 접수 실시간 채팅 상담 봇 알림 테스트",
+    "category": "chat",
+    "completed": true,
+    "createdAt": 1700000000000
+  },
+  {
+    "id": 2,
+    "text": "신규 가입자 운전면허 진위확인 API 연동 심사",
+    "category": "mypage",
+    "completed": false,
+    "createdAt": 1700001000000
+  },
+  {
+    "id": 3,
+    "text": "하이패스 주행 요금 미납 건 재승인 로직 점검",
+    "category": "payment",
+    "completed": false,
+    "createdAt": 1700002000000
+  }
+]
+

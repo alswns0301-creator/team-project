@@ -1,0 +1,19 @@
+{
+  "name": "car-sharing-task-manager",
+  "version": "1.0.0",
+  "description": "Daily Task Manager for Car-Sharing Service modules (Chat, MyPage, Payment)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "stop": "powershell -ExecutionPolicy Bypass -File ./stop.ps1"
+  },
+  "keywords": [
+    "carsharing",
+    "todo",
+    "vanillajs",
+    "taskmanager"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카쉐어링 데일리 태스크 매니저</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-top">
+        <h1 class="app-title">🚗 Car-Sharing Tasks</h1>
+        <span class="today-date" id="todayDate">2026. 11. 10</span>
+      </div>
+      <p class="app-subtitle">카쉐어링 서비스 핵심 모듈(채팅/마이페이지/결제수단) 일일 업무 관리</p>
+    </header>
+
+    <!-- Progress Card -->
+    <section class="progress-card">
+      <div class="progress-info">
+        <span class="progress-label">오늘의 달성률</span>
+        <span class="progress-stat" id="progressStat">0/0 완료 (0%)</span>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressBarFill"></div>
+      </div>
+      <p class="progress-message" id="progressMessage">오늘 처리할 카쉐어링 업무를 등록해보세요!</p>
+    </section>
+
+    <!-- Input Form -->
+    <form class="task-form" id="taskForm">
+      <div class="form-inputs">
+        <select id="categorySelect" class="category-select" aria-label="카테고리 선택">
+          <option value="chat">💬 채팅</option>
+          <option value="mypage">👤 마이페이지</option>
+          <option value="payment">💳 결제수단</option>
+        </select>
+        <input 
+          type="text" 
+          id="taskInput" 
+          class="task-input" 
+          placeholder="업무 내용을 입력하세요 (예: 하이패스 정산 미납 재승인 확인)" 
+          autocomplete="off"
+          required
+        >
+        <button type="submit" class="btn btn-primary add-btn">
+          <span class="btn-icon">+</span> 추가
+        </button>
+      </div>
+    </form>
+
+    <!-- Filter Tabs & Actions -->
+    <section class="filter-section">
+      <div class="filter-tabs" id="filterTabs">
+        <button type="button" class="tab-btn active" data-filter="all">전체 <span class="badge" id="countAll">0</span></button>
+        <button type="button" class="tab-btn" data-filter="chat">💬 채팅 <span class="badge" id="countChat">0</span></button>
+        <button type="button" class="tab-btn" data-filter="mypage">👤 마이페이지 <span class="badge" id="countMypage">0</span></button>
+        <button type="button" class="tab-btn" data-filter="payment">💳 결제수단 <span class="badge" id="countPayment">0</span></button>
+      </div>
+      <button type="button" class="btn-clear-completed" id="clearCompletedBtn" title="완료된 항목 일괄 삭제">
+        완료 항목 정리
+      </button>
+    </section>
+
+    <!-- Task List Area -->
+    <main class="task-main">
+      <ul class="task-list" id="taskList">
+        <!-- Dynamically rendered by app.js -->
+      </ul>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🚙</div>
+        <p class="empty-title">등록된 업무가 없습니다.</p>
+        <p class="empty-desc">오늘 처리할 카쉐어링 할 일을 추가하고 알차게 시작해보세요!</p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <span>브라우저 새로고침 시에도 LocalStorage에 데이터가 자동 보존됩니다.</span>
+    </footer>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal-overlay" id="editModal" aria-hidden="true">
+    <div class="modal-card">
+      <h2 class="modal-title">할 일 수정</h2>
+      <form id="editForm">
+        <div class="modal-field">
+          <label for="editCategorySelect">카테고리</label>
+          <select id="editCategorySelect" class="category-select">
+            <option value="chat">💬 채팅</option>
+            <option value="mypage">👤 마이페이지</option>
+            <option value="payment">💳 결제수단</option>
+          </select>
+        </div>
+        <div class="modal-field">
+          <label for="editTaskInput">내용</label>
+          <input type="text" id="editTaskInput" class="task-input" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelEditBtn">취소</button>
+          <button type="submit" class="btn btn-primary">수정 완료</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
